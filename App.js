@@ -29,7 +29,7 @@ export default function App() {
   }
 
   return (
-    <View style={globalStyles.container} onLayout={onLayoutRootView}>
+    <View style={globalStyles.root} onLayout={onLayoutRootView}>
       <HomeStack />
     </View>
   );
