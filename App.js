@@ -9,23 +9,20 @@ SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    "Montserrat-Regular": require("./assets/fonts/Montserrat/Montserrat-Regular.ttf"),
+    Montserrat: require("./assets/fonts/Montserrat/Montserrat.ttf"),
     "Montserrat-ExtraBold": require("./assets/fonts/Montserrat/Montserrat-ExtraBold.ttf"),
   });
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
+      console.log("Fonts loaded");
       await SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
 
   if (!fontsLoaded) {
-    console.log("Fonts");
-    return <Text>Loading...</Text>;
+    console.log("Fonts loading");
+    return null;
   }
 
-  return (
-    <View onLayout={onLayoutRootView}>
-      <Home />
-    </View>
-  );
+  return <Home onLayout={onLayoutRootView} />;
 }
