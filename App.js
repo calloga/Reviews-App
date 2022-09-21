@@ -1,9 +1,12 @@
+import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import Home from "./screens/Home";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback } from "react";
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+
+import { globalStyles } from "./styles/global";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -24,5 +27,9 @@ export default function App() {
     return null;
   }
 
-  return <Home onLayout={onLayoutRootView} />;
+  return (
+    <View style={globalStyles.container} onLayout={onLayoutRootView}>
+      <Home />
+    </View>
+  );
 }
